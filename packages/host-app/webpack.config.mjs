@@ -235,42 +235,41 @@ export default (env) => {
           assetsPath,
         },
       }),
+      new Repack.plugins.ModuleFederationPlugin({
+        name: 'HostApp',
+        shared: {
+            react: {
+                singleton: true,
+                eager: true,
+                requiredVersion: '18.2.0',
+            },
+            'react-native': {
+                singleton: true,
+                eager: true,
+                requiredVersion: '0.71.3',
+            },
+            '@react-navigation/native': {
+                singleton: true,
+                eager: true,
+                requiredVersion: '6.0.14',
+            },
+            '@react-navigation/native-stack': {
+                singleton: true,
+                eager: true,
+                requiredVersion: '6.9.2',
+            },
+            'react-native-safe-area-context': {
+                singleton: true,
+                eager: true,
+                requiredVersion: '4.5.0',
+            },
+            'react-native-screens': {
+                singleton: true,
+                eager: true,
+                requiredVersion: '3.20.0',
+            },
+        },
+      })
     ],
   };
 };
-
-new Repack.plugins.ModuleFederationPlugin({
-  name: 'HostApp',
-  shared: {
-      react: {
-          singleton: true,
-          eager: true,
-          requiredVersion: '18.2.0',
-      },
-      'react-native': {
-          singleton: true,
-          eager: true,
-          requiredVersion: '0.71.3',
-      },
-      '@react-navigation/native': {
-          singleton: true,
-          eager: true,
-          requiredVersion: '6.0.14',
-      },
-      '@react-navigation/native-stack': {
-          singleton: true,
-          eager: true,
-          requiredVersion: '6.9.2',
-      },
-      'react-native-safe-area-context': {
-          singleton: true,
-          eager: true,
-          requiredVersion: '4.5.0',
-      },
-      'react-native-screens': {
-          singleton: true,
-          eager: true,
-          requiredVersion: '3.20.0',
-      },
-  },
-})
